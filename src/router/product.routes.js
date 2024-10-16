@@ -1,7 +1,8 @@
 import { Router } from 'express';
 import { productsCtrl } from '../controllers/product.controller.js';
-import { upload } from '../middlewares/multer.middleware.js';
+import { uploadMiddleware } from '../middlewares/upload.middleware.js';
+
 
 export const productsRouter = Router();
 
-productsRouter.post('/', upload.single(), productsCtrl.createProduct);
+productsRouter.post('/', uploadMiddleware('productImg'), productsCtrl.createProduct);

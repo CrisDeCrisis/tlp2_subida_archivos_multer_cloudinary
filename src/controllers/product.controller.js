@@ -10,5 +10,7 @@ export const productsCtrl = {};
 // }
 
 productsCtrl.createProduct = async (req, res) => {
+    console.log(req.file);
 
+    res.status(201).json(req.body);
 };

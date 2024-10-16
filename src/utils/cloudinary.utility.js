@@ -8,8 +8,8 @@ cloudinary.config({
     secure: true
 });
 
-export async function uploadFile(filePath) {
-    return await cloudinary.uploader.upload(filePath, {
+export async function uploadFile(path) {
+    return await cloudinary.uploader.upload(path, {
         folder: 'Multer'
     });
 };

@@ -5,7 +5,7 @@ import crypto from 'node:crypto';
 // Configuracion de storage
 export const storage = multer.diskStorage({
     destination: (_req, _file, cb) => {
-        cb(null, path.join(__dirname, '/temp/'));
+        cb(null, 'temp/');
     },
     filename: (_req, file, cb) => {
         const fileName =
@@ -25,7 +25,7 @@ export const fileFilter = (_req, file, cb) => {
     const fileTypes = /jpg|png/;
     const allowedExname = fileTypes.test(path.extname(file.originalname).toLowerCase());
 
-    if (allowedExname) {
+    if (!allowedExname) {
         return cb(new Error("Solo se permiten archivos de tipo jpg o png"));
     }
 
