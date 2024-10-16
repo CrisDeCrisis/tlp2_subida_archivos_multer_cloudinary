@@ -1,16 +1,14 @@
+import { productsService } from "../services/product.service.js";
+
+
 export const productsCtrl = {};
 
-// Estructura de un producto
-// {
-//     "id": "string",
-//     "name": "string",
-//     "description": "string",
-//     "price": "number",
-//     "imageUrl": "string"
-// }
-
 productsCtrl.createProduct = async (req, res) => {
-    console.log(req.file);
-
-    res.status(201).json(req.body);
+    try {
+        const product = req;
+        const createdProduct = await productsService.createProduct(product);
+        res.status(201).json(createdProduct);
+    } catch (error) {
+        res.status(500).send(error);
+    }
 };
