@@ -8,7 +8,7 @@ import { applyProductValidation } from '../middlewares/productValidation.middlew
 export const productsRouter = Router();
 
 productsRouter.post('/',
-    // createProductValidation,
-    // applyProductValidation,
     uploadMiddleware('productImg'),
+    createProductValidation,
+    applyProductValidation,
     productsCtrl.createProduct);
