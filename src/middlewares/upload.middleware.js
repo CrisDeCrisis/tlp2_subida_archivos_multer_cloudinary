@@ -1,5 +1,11 @@
 import multer from "multer";
-import { upload } from "./multer.middleware.js";
+import { upload } from "../utils/multer.utility.js";
+import fs from 'node:fs';
+
+const tempDir = 'temp';
+if (!fs.existsSync(tempDir)) {
+  fs.mkdirSync(tempDir);
+}
 
 export const uploadMiddleware = (fieldName) => (req, res, next) => {
   const uploadSingle = upload.single(fieldName);
